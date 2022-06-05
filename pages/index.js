@@ -1,6 +1,7 @@
 import Head from "next/head";
-import HeroImg from "../public/hero_img.svg";
 import Image from "next/image";
+import HeroImg from "../public/hero_img.svg";
+import MobileHeroImg from "../public/mobile_hero_img.svg";
 
 export default function Home() {
   return (
@@ -10,10 +11,10 @@ export default function Home() {
       </Head>
       <main>
         {/* Hero Section */}
-        <div className="flex justify-start align items-center pl-8 overflow-hidden relative h-screen">
-          <div>
+        <div className="flex md:justify-start justify-center align items-center px-4 md:px-0 md:pl-8 overflow-hidden relative h-screen">
+          <div className="md:text-left text-center">
             <div className="text-black">
-              <h2 className="xl:text-6xl md:text-5xl text-3xl font-bold xl:leading-snug">
+              <h2 className="xl:text-6xl md:text-5xl text-4xl font-bold sm:leading-snug md:leading-snug lg:leading-snug xl:leading-snug">
                 <p>Invoice Generation</p>
                 <p>Made Easy ✅</p>
               </h2>
@@ -27,8 +28,16 @@ export default function Home() {
               <i className="bi bi-arrow-right ml-2"></i>
             </button>
           </div>
-          <div className="translate-x-28 translate-y-24 absolute right-0 top-8">
+          <div className="translate-x-28 translate-y-24 absolute right-0 top-8 hidden md:block">
             <Image height={700} width={600} src={HeroImg} alt="Hero Image" />
+          </div>
+          <div className="absolute top-[75%] visible md:hidden">
+            <Image
+              height={700}
+              width={600}
+              src={MobileHeroImg}
+              alt="Hero Image"
+            />
           </div>
         </div>
         {/* Features Section */}
@@ -36,8 +45,8 @@ export default function Home() {
           <h3 className="text-2xl font-bold text-black text-center py-6">
             Features of Invoice Generator 🌟
           </h3>
-          <div className="flex justify-evenly">
-            <div className="bg-white shadow-md rounded-sm text-center px-4 py-8 w-[26%]">
+          <div className="flex justify-evenly flex-col md:flex-row">
+            <div className="bg-white shadow-md rounded-sm text-center px-4 py-8 w-full md:w-[26%]">
               <div className="icon text-5xl">⌚</div>
               <h4 className="text-xl font-semibold text-primary-400 my-4">
                 Quick Easy Invoice
@@ -46,7 +55,7 @@ export default function Home() {
                 Create professional invoices instantly without any hassle
               </p>
             </div>
-            <div className="bg-white shadow-md rounded-sm text-center px-4 py-8 mx-4 w-[26%]">
+            <div className="bg-white shadow-md rounded-sm text-center px-4 py-8 md:mx-4 my-4 md:my-0 w-full md:w-[26%]">
               <div className="icon text-5xl">📄</div>
               <h4 className="text-xl font-semibold text-primary-400 my-4">
                 Invoice Templates
@@ -55,7 +64,7 @@ export default function Home() {
                 Choose from multiple invoice designs, send personalized invoices
               </p>
             </div>
-            <div className="bg-white shadow-md rounded-sm text-center px-4 py-8 w-[26%]">
+            <div className="bg-white shadow-md rounded-sm text-center px-4 py-8 w-full md:w-[26%]">
               <div className="icon text-5xl">📧</div>
               <h4 className="text-xl font-semibold text-primary-400 my-4">
                 Email Invoice
@@ -73,41 +82,42 @@ export default function Home() {
             <span className="underline text-primary-400">Get Started</span> 👍🏻
           </h3>
           <div>
-            <div className="flex justify-around align items-center my-4">
+            <div className="flex flex-col justify-center md:flex-row md:justify-around align items-center my-6">
               <div className="relative">
-                <span className="text-6xl font-bold text-gray-200 absolute -left-6 -top-6 z-[-1]">
+                <span className="text-5xl md:text-6xl font-bold text-gray-200 absolute -left-6 -top-6 z-[-1]">
                   #1
                 </span>
-                <p className="text-2xl font-bold text-black">
+                <p className="text-xl md:text-2xl font-bold text-black">
                   <p>Fill up invoice</p>
                   <p>details in the form 📃</p>
                 </p>
               </div>
-              <div className="h-[200px] w-[30%] bg-primary-100 rounded-sm"></div>
+              <div className="h-[200px] w-[70%] md:w-[30%] my-4 md:my-0 bg-primary-100 rounded-sm"></div>
             </div>
-            <div className="flex justify-around align items-center my-4">
-              <div className="h-[200px] w-[30%] bg-primary-100 rounded-sm"></div>
+            <div className="flex flex-col-reverse justify-center md:flex-row md:justify-around align items-center my-6">
+              <div className="h-[200px] w-[70%] md:w-[30%] my-4 md:my-0 bg-primary-100 rounded-sm"></div>
               <div className="relative">
-                <span className="text-6xl font-bold text-gray-200 absolute -left-6 -top-6 z-[-1]">
+                <span className="text-5xl md:text-6xl font-bold text-gray-200 absolute -left-6 -top-6 z-[-1]">
                   #2
                 </span>
-                <p className="text-2xl font-bold text-black">
+                <p className="text-xl md:text-2xl font-bold text-black">
                   <p>Choose your favorite</p>
                   <p>Template & Color ✨</p>
                 </p>
               </div>
             </div>
-            <div className="flex justify-around align items-center my-4">
+            <div className="flex flex-col justify-center md:flex-row md:justify-around align items-center my-6">
               <div className="relative">
-                <span className="text-6xl font-bold text-gray-200 absolute -left-6 -top-6 z-[-1]">
+                <span className="text-5xl md:text-6xl font-bold text-gray-200 absolute -left-6 -top-6 z-[-1]">
                   #3
                 </span>
-                <p className="text-2xl font-bold text-black">
-                  <p>Download the invoice as PDF</p>
-                  <p>or Send it via Email 🎈</p>
+                <p className="text-xl md:text-2xl font-bold text-black">
+                  <p>Download the invoice</p>
+                  <p>as PDF or Send</p>
+                  <p>it via Email 🎈</p>
                 </p>
               </div>
-              <div className="h-[200px] w-[30%] bg-primary-100 rounded-sm"></div>
+              <div className="h-[200px] w-[70%] md:w-[30%] my-4 md:my-0 bg-primary-100 rounded-sm"></div>
             </div>
           </div>
           <div className="flex justify-center">
@@ -117,6 +127,7 @@ export default function Home() {
           </div>
         </div>
       </main>
+      {/* Footer */}
       <footer className="bg-chocolate-200 flex justify-evenly align items-center px-6 py-6">
         <div className="text-white flex flex-col align items-center">
           <p className="font-medium text-sm">© 2022 Invoicer Pvt. Ltd.</p>
@@ -125,7 +136,7 @@ export default function Home() {
             <i className="bi bi-twitter"></i>
           </span>
         </div>
-        <div className="text-white font-medium text-center">
+        <div className="hidden md:block text-white font-medium text-center">
           <p className="text-chocolate-100">About Project</p>
           <p className="text-sm mt-2">
             <p>Built 👨‍💻 with Next JS + Tailwind</p>
@@ -142,7 +153,7 @@ export default function Home() {
             </p>
           </p>
         </div>
-        <div className="text-white font-medium text-center">
+        <div className="hidden md:block text-white font-medium text-center">
           <p className="text-chocolate-100">Contact</p>
           <p className="text-sm mt-2">
             <p>📧 rohitdhas666@gmail.com</p>
