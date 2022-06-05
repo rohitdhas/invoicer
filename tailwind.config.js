@@ -10,6 +10,7 @@ module.exports = {
       current: "currentColor",
       white: "#ffffff",
       black: "#18202B",
+      blue: "#3b82f6",
       primary: {
         100: "#FAF1F0",
         200: "#FBAFA7",
@@ -27,6 +28,10 @@ module.exports = {
         300: "#d1d5db",
         400: "#9ca3af",
         500: "#6b7280",
+      },
+      chocolate: {
+        100: "#A08C8A",
+        200: "#453F3F",
       },
     },
   },
