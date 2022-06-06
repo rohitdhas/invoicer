@@ -1,7 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
-import HeroImg from "../public/hero_img.svg";
 import MobileHeroImg from "../public/mobile_hero_img.svg";
+import TemplateImg from "../public/template_img.svg";
+import DownloadImg from "../public/download.svg";
+import HeroImg from "../public/hero_img.svg";
+import FormImg from "../public/form.svg";
 
 export default function Home() {
   return (
@@ -82,7 +85,7 @@ export default function Home() {
             <span className="underline text-primary-400">Get Started</span> 👍🏻
           </h3>
           <div>
-            <div className="flex flex-col justify-center md:flex-row md:justify-around align items-center my-6">
+            <div className="flex flex-col justify-center md:flex-row md:justify-around align items-center mb-[30%] mt-[10%] md:mt-6 md:mb-[10%]">
               <div className="relative">
                 <span className="text-5xl md:text-6xl font-bold text-gray-200 absolute -left-6 -top-6 z-[-1]">
                   #1
@@ -92,10 +95,18 @@ export default function Home() {
                   <p>details in the form 📃</p>
                 </p>
               </div>
-              <div className="h-[200px] w-[70%] md:w-[30%] my-4 md:my-0 bg-primary-100 rounded-sm"></div>
+              <div className="h-[100px] w-[70%] md:w-[20%] my-6 md:my-0 rounded-sm">
+                <Image src={FormImg} alt="Form Img" className="h-full w-full" />
+              </div>
             </div>
-            <div className="flex flex-col-reverse justify-center md:flex-row md:justify-around align items-center my-6">
-              <div className="h-[200px] w-[70%] md:w-[30%] my-4 md:my-0 bg-primary-100 rounded-sm"></div>
+            <div className="flex flex-col-reverse justify-center md:flex-row md:justify-around align items-center mb-[30%] mt-[10%] md:mt-6 md:mb-[10%]">
+              <div className="h-[100px] w-[70%] md:w-[20%] my-6 md:my-0 rounded-sm">
+                <Image
+                  src={TemplateImg}
+                  alt="Template Img"
+                  className="h-full w-full"
+                />
+              </div>
               <div className="relative">
                 <span className="text-5xl md:text-6xl font-bold text-gray-200 absolute -left-6 -top-6 z-[-1]">
                   #2
@@ -106,7 +117,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col justify-center md:flex-row md:justify-around align items-center my-6">
+            <div className="flex flex-col justify-center md:flex-row md:justify-around align items-center mb-[30%] mt-[10%] md:mt-6 md:mb-[10%]">
               <div className="relative">
                 <span className="text-5xl md:text-6xl font-bold text-gray-200 absolute -left-6 -top-6 z-[-1]">
                   #3
@@ -117,7 +128,13 @@ export default function Home() {
                   <p>it via Email 🎈</p>
                 </p>
               </div>
-              <div className="h-[200px] w-[70%] md:w-[30%] my-4 md:my-0 bg-primary-100 rounded-sm"></div>
+              <div className="h-[100px] w-[50%] md:w-[15%] my-6 md:my-0 rounded-sm">
+                <Image
+                  src={DownloadImg}
+                  alt="Download Img"
+                  className="h-full w-full"
+                />
+              </div>
             </div>
           </div>
           <div className="flex justify-center">
