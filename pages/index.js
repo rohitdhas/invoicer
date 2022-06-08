@@ -14,7 +14,7 @@ export default function Home() {
       </Head>
       <main>
         {/* Hero Section */}
-        <div className="flex md:justify-start justify-center align items-center px-4 md:px-0 md:pl-8 overflow-hidden relative h-screen">
+        <div className="flex md:justify-start justify-center align items-center px-4 md:px-0 md:pl-[8%] overflow-hidden relative h-screen">
           <div className="md:text-left text-center">
             <div className="text-black">
               <h2 className="xl:text-6xl md:text-5xl text-4xl font-bold sm:leading-snug md:leading-snug lg:leading-snug xl:leading-snug">
@@ -31,8 +31,8 @@ export default function Home() {
               <i className="bi bi-arrow-right ml-2"></i>
             </button>
           </div>
-          <div className="translate-x-28 translate-y-24 absolute right-0 top-8 hidden md:block">
-            <Image height={700} width={600} src={HeroImg} alt="Hero Image" />
+          <div className="translate-x-28 translate-y-24 absolute -right-8 top-8 hidden md:block">
+            <Image height={900} width={800} src={HeroImg} alt="Hero Image" />
           </div>
           <div className="absolute top-[75%] visible md:hidden">
             <Image
