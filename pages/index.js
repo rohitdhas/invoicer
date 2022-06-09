@@ -14,12 +14,14 @@ export default function Home() {
       </Head>
       <main>
         {/* Hero Section */}
+        {/* <div className="grid grid-cols-2 align items-center justify-items-center px-4 md:px-0 overflow-hidden relative h-screen"> */}
         <div className="flex md:justify-start justify-center align items-center px-4 md:px-0 md:pl-[8%] overflow-hidden relative h-screen">
           <div className="md:text-left text-center">
             <div className="text-black">
               <h2 className="xl:text-6xl md:text-5xl text-4xl font-bold sm:leading-snug md:leading-snug lg:leading-snug xl:leading-snug">
-                <p>Invoice Generation</p>
-                <p>Made Easy ✅</p>
+                Invoice Generation
+                <br />
+                Made Easy ✅
               </h2>
               <p className="font-medium text-gray-500 mt-5 mb-8">
                 <p>Create Beautifully ✨ Designed Invoice with our</p>
@@ -85,47 +87,60 @@ export default function Home() {
             <span className="underline text-primary-400">Get Started</span> 👍🏻
           </h3>
           <div>
-            <div className="flex flex-col justify-center md:flex-row md:justify-around align items-center mb-[30%] mt-[10%] md:mt-6 md:mb-[10%]">
-              <div className="relative">
+            <div className="flex flex-col justify-center md:flex-row md:justify-around align items-center mb-[20%] mt-[10%] md:mt-6 md:mb-[10%]">
+              <div className="relative w-[90%] text-center md:text-left md:w-[30%]">
                 <span className="text-5xl md:text-6xl font-bold text-gray-200 absolute -left-6 -top-6 z-[-1]">
                   #1
                 </span>
-                <p className="text-xl md:text-2xl font-bold text-black">
-                  <p>Fill up invoice</p>
-                  <p>details in the form 📃</p>
-                </p>
+                <div>
+                  <h2 className="text-xl md:text-2xl font-bold text-black">
+                    Fill up invoice <br />
+                    details in the form 📃
+                  </h2>
+                  <p className="text-sm text-gray-500 mt-2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Facilis asperiores totam minima itaque
+                  </p>
+                </div>
               </div>
-              <div className="h-[100px] w-[70%] md:w-[20%] my-6 md:my-0 rounded-sm">
+              <div className="w-[70%] md:w-[20%] my-6 md:my-0">
                 <Image src={FormImg} alt="Form Img" className="h-full w-full" />
               </div>
             </div>
             <div className="flex flex-col-reverse justify-center md:flex-row md:justify-around align items-center mb-[30%] mt-[10%] md:mt-6 md:mb-[10%]">
-              <div className="h-[100px] w-[70%] md:w-[20%] my-6 md:my-0 rounded-sm">
-                <Image
-                  src={TemplateImg}
-                  alt="Template Img"
-                  className="h-full w-full"
-                />
+              <div className="h-[100px] w-[70%] md:w-[20%] my-6 md:my-0">
+                <Image src={TemplateImg} alt="Template Img" />
               </div>
-              <div className="relative">
+              <div className="relative w-[90%] text-center md:text-left md:w-[30%]">
                 <span className="text-5xl md:text-6xl font-bold text-gray-200 absolute -left-6 -top-6 z-[-1]">
                   #2
                 </span>
-                <p className="text-xl md:text-2xl font-bold text-black">
-                  <p>Choose your favorite</p>
-                  <p>Template & Color ✨</p>
-                </p>
+                <div>
+                  <p className="text-xl md:text-2xl font-bold text-black">
+                    Choose your favorite
+                    <br />
+                    Template & Color ✨
+                  </p>
+                  <p className="text-sm text-gray-500 mt-2">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Quod voluptatibus molestias omnis veritatis
+                  </p>
+                </div>
               </div>
             </div>
             <div className="flex flex-col justify-center md:flex-row md:justify-around align items-center mb-[30%] mt-[10%] md:mt-6 md:mb-[10%]">
-              <div className="relative">
+              <div className="relative w-[90%] text-center md:text-left md:w-[30%]">
                 <span className="text-5xl md:text-6xl font-bold text-gray-200 absolute -left-6 -top-6 z-[-1]">
                   #3
                 </span>
                 <p className="text-xl md:text-2xl font-bold text-black">
-                  <p>Download the invoice</p>
-                  <p>as PDF or Send</p>
-                  <p>it via Email 🎈</p>
+                  Download the invoice
+                  <br />
+                  as PDF🎈
+                </p>
+                <p className="text-sm text-gray-500 mt-2">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod
+                  voluptatibus molestias omnis veritatis
                 </p>
               </div>
               <div className="h-[100px] w-[50%] md:w-[15%] my-6 md:my-0 rounded-sm">
