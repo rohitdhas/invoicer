@@ -5,6 +5,7 @@ import TemplateImg from "../public/template_img.svg";
 import DownloadImg from "../public/download.svg";
 import HeroImg from "../public/hero_img.svg";
 import FormImg from "../public/form.svg";
+import Signin from "../components/signIn";
 
 export default function Home() {
   return (
