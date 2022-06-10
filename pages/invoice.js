@@ -39,8 +39,8 @@ export default function Invoice() {
             required
           />
         </div>
-        <div className="flex justify-center">
-          <div className="p-4 rounded-sm border-2 border-gray-600 w-[50%] my-4 mr-4">
+        <div className="flex justify-center flex-col md:flex-row">
+          <div className="p-4 rounded-sm border-2 border-gray-600 w-[100%] md:w-[50%] my-4 mr-4">
             <h4 className="underline font-bold">Billed By</h4>
             <select
               className="w-full p-2 rounded-sm border-2 border-gray-600 my-2"
@@ -59,7 +59,7 @@ export default function Invoice() {
               </button>
             </div>
           </div>
-          <div className="p-4 rounded-sm border-2 border-gray-600 w-[50%] my-4">
+          <div className="p-4 rounded-sm border-2 border-gray-600 w-[100%] md:w-[50%] my-4">
             <h4 className="underline font-bold">Billed To</h4>
             <select
               className="w-full p-2 rounded-sm border-2 border-gray-600 my-2"
@@ -81,7 +81,7 @@ export default function Invoice() {
         </div>
         <div className="rounded-sm border-2 border-gray-600 p-4">
           <h4 className="underline font-bold">Product/Service Details</h4>
-          <div className="flex justify-between">
+          <div className="flex justify-between flex-col lg:flex-row">
             <div className="flex flex-col">
               <label className="font-medium text-sm text-gray-500 my-2">
                 Item Name
