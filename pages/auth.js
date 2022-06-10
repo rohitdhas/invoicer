@@ -17,9 +17,14 @@ export default function Component() {
     );
   }
   return (
-    <>
+    <div className="mt-28">
       Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-    </>
+      <button
+        className="bg-blue rounded-sm text-white font-bold p-4"
+        onClick={() => signIn()}
+      >
+        Sign in
+      </button>
+    </div>
   );
 }

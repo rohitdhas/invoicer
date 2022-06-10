@@ -14,7 +14,6 @@ export default function Home() {
       </Head>
       <main>
         {/* Hero Section */}
-        {/* <div className="grid grid-cols-2 align items-center justify-items-center px-4 md:px-0 overflow-hidden relative h-screen"> */}
         <div className="flex md:justify-start justify-center align items-center px-4 md:px-0 md:pl-[8%] overflow-hidden relative h-screen">
           <div className="md:text-left text-center">
             <div className="text-black">
