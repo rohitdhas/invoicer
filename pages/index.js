@@ -5,15 +5,29 @@ import TemplateImg from "../public/template_img.svg";
 import DownloadImg from "../public/download.svg";
 import HeroImg from "../public/hero_img.svg";
 import FormImg from "../public/form.svg";
-import Signin from "../components/signIn";
+import SignIn from "../components/signIn";
+import { useState } from "react";
 
 export default function Home() {
+  const [modelVisible, setModelVisible] = useState(false);
+
   return (
     <div>
       <Head>
         <title>Invoicer</title>
       </Head>
       <main>
+        {modelVisible ? (
+          <div
+            onClick={() => setModelVisible(false)}
+            className="z-[10] fixed top-0 left-0 right-0 bottom-0 flex align items-center justify-center h-[100vh]"
+          >
+            <div className="bg-black opacity-50 fixed top-0 left-0 right-0 bottom-0"></div>
+            <SignIn />
+          </div>
+        ) : (
+          <></>
+        )}
         {/* Hero Section */}
         <div className="flex md:justify-start justify-center align items-center px-4 md:px-0 md:pl-[8%] overflow-hidden relative h-screen">
           <div className="md:text-left text-center">
@@ -28,7 +42,10 @@ export default function Home() {
                 <p>Free Invoice Generator in no time ⌚</p>
               </p>
             </div>
-            <button className="text-white font-bold px-6 py-2 bg-primary-400 hover:bg-primary-300 rounded-sm">
+            <button
+              onClick={() => setModelVisible(true)}
+              className="text-white font-bold px-6 py-2 bg-primary-400 hover:bg-primary-300 rounded-sm"
+            >
               <span>Get Started</span>
               <i className="bi bi-arrow-right ml-2"></i>
             </button>

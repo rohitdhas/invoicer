@@ -1,48 +1,29 @@
-import {
-  signIn,
-  signOut,
-  getCsrfToken,
-  getSession,
-  getProviders,
-} from "next-auth/react";
+import { getProviders, signIn } from "next-auth/react";
 
-function Signin({ providers }) {
-  console.log(providers);
+export default function SignIn({ providers }) {
   return (
-    <div>
-      {/* {Object.values(providers).map((provider) => {
-        return (
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className="absolute h-[200px] w-[200px] bg-white shadow-lg rounded-md z-[10] text-center p-4"
+    >
+      {providers ? (
+        Object.values(providers).map((provider) => (
           <div key={provider.name}>
             <button onClick={() => signIn(provider.id)}>
               Sign in with {provider.name}
             </button>
           </div>
-        );
-      })} */}
+        ))
+      ) : (
+        <h1>No Providers</h1>
+      )}
     </div>
   );
 }
 
-export default Signin;
-
 export async function getServerSideProps(context) {
-  const { req } = context;
-  const session = await getSession({ req });
-  const providers = await getProviders({ req });
-  const csrfToken = await getCsrfToken({ req });
-
-  console.log(session);
-
-  if (session) {
-    return {
-      redirect: { destination: "/" },
-    };
-  }
-
+  const providers = await getProviders();
   return {
-    props: {
-      providers,
-      csrfToken,
-    },
+    props: { providers },
   };
 }
