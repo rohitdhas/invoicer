@@ -1,15 +1,34 @@
 import Head from "next/head";
 import Image from "next/image";
 import MobileHeroImg from "../public/mobile_hero_img.svg";
+import { getProviders, useSession } from "next-auth/react";
 import TemplateImg from "../public/template_img.svg";
 import DownloadImg from "../public/download.svg";
 import HeroImg from "../public/hero_img.svg";
 import FormImg from "../public/form.svg";
 import SignIn from "../components/signIn";
+import Navbar from "../components/navbar";
+import Router from "next/router";
 import { useState } from "react";
 
-export default function Home() {
+export async function getServerSideProps(context) {
+  const providers = await getProviders();
+  return {
+    props: { providers },
+  };
+}
+
+export default function Home({ providers }) {
   const [modelVisible, setModelVisible] = useState(false);
+  const { data: session } = useSession();
+
+  const onCreateInvoice = () => {
+    if (!session) {
+      setModelVisible(true);
+    } else {
+      Router.push("/invoice");
+    }
+  };
 
   return (
     <div>
@@ -17,13 +36,14 @@ export default function Home() {
         <title>Invoicer</title>
       </Head>
       <main>
+        <Navbar toggleLoginModel={() => setModelVisible(true)} />
         {modelVisible ? (
           <div
             onClick={() => setModelVisible(false)}
             className="z-[10] fixed top-0 left-0 right-0 bottom-0 flex align items-center justify-center h-[100vh]"
           >
             <div className="bg-black opacity-50 fixed top-0 left-0 right-0 bottom-0"></div>
-            <SignIn />
+            <SignIn providers={providers} />
           </div>
         ) : (
           <></>
@@ -43,7 +63,7 @@ export default function Home() {
               </p>
             </div>
             <button
-              onClick={() => setModelVisible(true)}
+              onClick={onCreateInvoice}
               className="text-white font-bold px-6 py-2 bg-primary-400 hover:bg-primary-300 rounded-sm"
             >
               <span>Get Started</span>
@@ -170,7 +190,10 @@ export default function Home() {
             </div>
           </div>
           <div className="flex justify-center">
-            <button className="text-white font-bold px-8 py-2 bg-primary-400 hover:bg-primary-300 rounded-sm my-4">
+            <button
+              onClick={onCreateInvoice}
+              className="text-white font-bold px-8 py-2 bg-primary-400 hover:bg-primary-300 rounded-sm my-4"
+            >
               Create New Invoice
             </button>
           </div>

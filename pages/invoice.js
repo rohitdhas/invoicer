@@ -1,6 +1,27 @@
+import { getSession } from "next-auth/react";
+import Navbar from "../components/navbar";
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
+}
+
 export default function Invoice() {
   return (
     <div className="pt-12">
+      <Navbar />
       <h3 className="text-xl font-bold text-primary-400 underline text-center">
         New Invoice
       </h3>
