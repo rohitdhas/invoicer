@@ -10,6 +10,7 @@ import SignIn from "../components/signIn";
 import Navbar from "../components/navbar";
 import Router from "next/router";
 import { useState } from "react";
+import Link from "next/link";
 
 export async function getServerSideProps(context) {
   const providers = await getProviders();
@@ -42,7 +43,7 @@ export default function Home({ providers }) {
             onClick={() => setModelVisible(false)}
             className="z-[10] fixed top-0 left-0 right-0 bottom-0 flex align items-center justify-center h-[100vh]"
           >
-            <div className="bg-black opacity-50 fixed top-0 left-0 right-0 bottom-0"></div>
+            <div className="bg-black opacity-50 fixed top-0 left-0 right-0 bottom-0" />
             <SignIn providers={providers} />
           </div>
         ) : (
@@ -57,10 +58,10 @@ export default function Home({ providers }) {
                 <br />
                 Made Easy ✅
               </h2>
-              <p className="font-medium text-gray-500 mt-5 mb-8">
+              <div className="font-medium text-gray-500 mt-5 mb-8">
                 <p>Create Beautifully ✨ Designed Invoice with our</p>
                 <p>Free Invoice Generator in no time ⌚</p>
-              </p>
+              </div>
             </div>
             <button
               onClick={onCreateInvoice}
@@ -210,27 +211,26 @@ export default function Home({ providers }) {
         </div>
         <div className="hidden md:block text-white font-medium text-center">
           <p className="text-chocolate-100">About Project</p>
-          <p className="text-sm mt-2">
+          <div className="text-sm mt-2">
             <p>Built 👨‍💻 with Next JS + Tailwind</p>
-            <p>
+            <div>
               CSS by{" "}
-              <a
+              <Link
                 href="https://www.linkedin.com/in/rohit-dhas-26b68215a/"
-                target={"_blank"}
+                target="_blank"
                 rel="noreferrer"
-                className="underline hover:text-blue"
               >
-                Rohit Dhas
-              </a>
-            </p>
-          </p>
+                <a className="text-blue hover:underline">Rohit Dhas</a>
+              </Link>
+            </div>
+          </div>
         </div>
         <div className="hidden md:block text-white font-medium text-center">
           <p className="text-chocolate-100">Contact</p>
-          <p className="text-sm mt-2">
+          <div className="text-sm mt-2">
             <p>📧 rohitdhas666@gmail.com</p>
             <p>📞 +91 9359952174</p>
-          </p>
+          </div>
         </div>
       </footer>
     </div>

@@ -1,5 +1,6 @@
 import { getSession } from "next-auth/react";
 import Navbar from "../components/navbar";
+import { useState } from "react";
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -19,6 +20,26 @@ export async function getServerSideProps(context) {
 }
 
 export default function Invoice() {
+  const [invoiceDate, setInvoiceDate] = useState("");
+  const [productDetails, setProductDetails] = useState([
+    { key: "zzz", item_name: "", quantity: 0, amount: 0 },
+  ]);
+  const [termsAndConditions, setTermsAndConditions] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const [billedBy, setBilledBy] = useState();
+  const [billedTo, setBilledTo] = useState();
+
+  const updateProductDetails = (key, field, value) => {
+    const newList = productDetails.map((item) => {
+      if (item.key === key) {
+        item[field] = value;
+      }
+      return item;
+    });
+
+    setProductDetails(newList);
+  };
+
   return (
     <div className="pt-12">
       <Navbar />
@@ -40,6 +61,7 @@ export default function Invoice() {
             Invoice Date
           </label>
           <input
+            onChange={({ target }) => setInvoiceDate(target.value)}
             className="w-min px-4 py-2 rounded-sm border-2 border-gray-600"
             type="date"
             id="invoice_date"
@@ -54,6 +76,7 @@ export default function Invoice() {
             Due Date
           </label>
           <input
+            onChange={({ target }) => setDueDate(target.value)}
             className="w-min px-4 py-2 rounded-sm border-2 border-gray-600"
             type="date"
             id="due_date"
@@ -102,46 +125,94 @@ export default function Invoice() {
         </div>
         <div className="rounded-sm border-2 border-gray-600 p-4">
           <h4 className="underline font-bold">Product/Service Details</h4>
-          <div className="flex justify-between flex-col lg:flex-row">
-            <div className="flex flex-col">
-              <label className="font-medium text-sm text-gray-500 my-2">
-                Item Name
-              </label>
-              <input
-                className="w-min px-4 py-2 rounded-sm border-2 border-gray-600"
-                type="text"
-                required
-              />
-            </div>
-            <div className="flex flex-col">
-              <label className="font-medium text-sm text-gray-500 my-2">
-                Quantity
-              </label>
-              <input
-                className="w-min px-4 py-2 rounded-sm border-2 border-gray-600"
-                type="number"
-                required
-              />
-            </div>
-            <div className="flex flex-col">
-              <label className="font-medium text-sm text-gray-500 my-2">
-                Amount
-              </label>
-              <input
-                className="w-min px-4 py-2 rounded-sm border-2 border-gray-600"
-                type="number"
-                required
-              />
-            </div>
+          <div className="flex flex-col">
+            {productDetails.map((item) => {
+              return (
+                <div
+                  key={item.key}
+                  className="flex justify-between align items-center flex-col lg:flex-row"
+                >
+                  <div className="flex flex-col">
+                    <label className="font-medium text-sm text-gray-500 my-2">
+                      Item Name
+                    </label>
+                    <input
+                      className="w-min px-4 py-2 rounded-sm border-2 border-gray-600"
+                      type="text"
+                      required
+                      onChange={({ target }) =>
+                        updateProductDetails(
+                          item.key,
+                          "item_name",
+                          target.value
+                        )
+                      }
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="font-medium text-sm text-gray-500 my-2">
+                      Quantity
+                    </label>
+                    <input
+                      className="w-min px-4 py-2 rounded-sm border-2 border-gray-600"
+                      type="number"
+                      required
+                      onChange={({ target }) =>
+                        updateProductDetails(item.key, "quantity", target.value)
+                      }
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="font-medium text-sm text-gray-500 my-2">
+                      Amount
+                    </label>
+                    <input
+                      className="w-min px-4 py-2 rounded-sm border-2 border-gray-600"
+                      type="number"
+                      required
+                      onChange={({ target }) =>
+                        updateProductDetails(item.key, "amount", target.value)
+                      }
+                    />
+                  </div>
+                  {productDetails.length > 1 ? (
+                    <i
+                      onClick={() => {
+                        const list = productDetails.filter((obj) => {
+                          return obj.key !== item.key;
+                        });
+                        setProductDetails(list);
+                      }}
+                      className="bi bi-x-circle"
+                    ></i>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              );
+            })}
           </div>
-          <button className="cursor-pointer text-sm px-4 py-2 my-4 text-center rounded-sm hover:bg-gray-200 bg-white w-full font-bold border-2 border-gray-600">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setProductDetails((prev) => [
+                ...prev,
+                { key: Date.now(), amount: 0, quantity: 0, item_name: "" },
+              ]);
+            }}
+            className="cursor-pointer text-sm px-4 py-2 my-4 text-center rounded-sm hover:bg-gray-200 bg-white w-full font-bold border-2 border-gray-600"
+          >
             <span>Add Field</span>
             <i className="bi bi-plus-circle ml-2"></i>
           </button>
         </div>
         <div className="rounded-sm border-2 border-gray-600 p-4 my-4">
           <h4 className="underline font-bold">Terms and Conditions</h4>
-          <textarea className="px-4 py-2 mt-2 rounded-sm border-2 border-gray-600 w-full"></textarea>
+          <textarea
+            value={termsAndConditions}
+            onChange={({ target }) => setTermsAndConditions(target.value)}
+            className="px-4 py-2 mt-2 rounded-sm border-2 border-gray-600 w-full"
+          ></textarea>
         </div>
         <div className="flex justify-center mt-6">
           <button className="cursor-pointer mr-2 text-sm px-4 py-2 text-center rounded-sm bg-white hover:bg-gray-100 border-2 border-black font-bold">
